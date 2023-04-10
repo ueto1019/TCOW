@@ -1,0 +1,44 @@
+// Place all the styles related to the employee_menus controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.clock-form input {
+    height: 50px;
+    width: 300px;
+    margin-bottom: 50px;
+    font-size: 30px;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100px;
+    margin-bottom: 30px;
+    background-color: #efefef;
+    text-decoration: none;
+    color: black;
+    border-radius: 2px;
+    text-align: center;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+.logout:hover {
+    background-color: #e5e5e5;
+}
+
+.employee-nav {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: blue;
+    text-align: center;
+}
+
+.employee-nav:hover {
+    color: rgb(77, 77, 255);
+    font-size: 19px;
+}

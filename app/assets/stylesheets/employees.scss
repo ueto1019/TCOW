@@ -1,0 +1,108 @@
+// Place all the styles related to the employees controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// 勤怠情報
+.time-table {
+    display: flex;
+    flex-direction: row;
+}
+
+.month-index {
+    padding: 20px 0 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.datetime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    padding: 5px;
+    height: 30px;
+    border: 1px solid rgb(198, 198, 198);
+}
+
+.created-at,
+.empty-time {
+    width: 120px;
+}
+
+.created-at {
+    background-color: rgb(240, 240, 240);
+}
+
+.empty-time {
+    color: red;
+}
+
+.t-edit {
+    width: 80px;
+    text-decoration: none;
+    color: white;
+    background-color: gray;
+}
+
+.t-edit:hover {
+    background-color: rgb(199, 199, 199);
+}
+
+span {
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}
+
+.rec-edit {
+    border-color: red;
+}
+
+.month-data {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+// マイページ
+
+.my-page-head {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.employee-edit-nav {
+    display: inline-block;
+    text-decoration: none;
+    color: blue;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.employee-edit-nav:hover {
+    display: inline-block;
+    color: rgb(77, 77, 255);
+    font-size: 19px;
+}
+
+.date-index {
+    font-size: 20px;
+}
+
+.year-month {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+.year-month:hover {
+    font-size: 21px;
+}
+
+.employee-index {
+    text-decoration: none;
+}
+
+
+
+

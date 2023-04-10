@@ -1,0 +1,23 @@
+<h2>打刻時間修正</h2>
+
+<%= form_with model: @work_time, url: work_time_path(@work_time), data: { confirm: '本当に修正してもよろしいですか？' } do |f| %>
+    <div class="tied-form">
+        <h4>出勤時刻</h4>
+        <% if @work_time.clock_in.nil? %>
+            <%= f.datetime_select :clock_in, {use_month_numbers: true}, {class: "datetime-form"} %> <span><< 修正してください</span>
+        <% else %>
+            <%= f.datetime_select :clock_in, {use_month_numbers: true, placeholder: @work_time.clock_in}, {class: "datetime-form"} %>
+        <% end %>
+    </div>
+    <div class="tied-form">
+        <h4>退勤時刻</h4>
+        <% if @work_time.clock_out.nil? %>
+            <%= f.datetime_select :clock_out, {use_month_numbers: true}, {class: "datetime-form"} %> <span><< 修正してください</span>
+        <% else %>
+            <%= f. datetime_select :clock_out, {use_month_numbers: true, placeholder: @work_time.clock_out}, {class: "datetime-form"} %>
+        <% end %>
+    </div>
+    <div class="tied-submit">
+        <%= f.submit "修正" %>
+    </div>
+<% end %>

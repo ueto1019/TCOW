@@ -1,0 +1,58 @@
+// Place all the styles related to the admin_menus controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.admin-menus {
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 20px;
+    color: blue;
+    font-size: 18px;
+}
+
+.admin-menus:hover {
+    color: rgb(77, 77, 255);
+    font-size: 19px;
+}
+
+// 管理者操作ページ
+.employee-index {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+.employee-index:hover {
+    font-size: 19px;
+}
+
+.emed-submit input{
+    margin-top: 10px;
+    width: 70px;
+    height: 30px;
+}
+
+.emed-form input {
+    width: 100px;
+    height: 25px;
+    margin: 10px 0 20px 0;
+    font-size: 18px;
+}
+
+.datetime-form {
+    width: 55px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.tied-form {
+    margin: 10px 0;
+}
+
+.tied-submit input{
+    margin-top: 10px;
+    width: 70px;
+    height: 30px;
+}

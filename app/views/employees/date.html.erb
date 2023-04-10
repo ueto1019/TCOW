@@ -1,0 +1,42 @@
+<div class="my-page-head">
+    従業員ID: <%= @employee.employee_id %><br>
+    氏名: <%= @employee.name %>
+</div>
+
+<div class="month-index">
+    <%= "#{@year.to_s}年 #{@month.to_s}月" %>
+</div>
+
+<% @work_times.each do |time| %>
+    <div class="time-table">
+        <div class="datetime created-at <%= "empty-time" if time.clock_in.nil? || time.clock_out.nil? %>">
+            <% if time.clock_in.nil? || time.clock_out.nil? %>
+                <%= time.created_at.to_s(:datetime_jp_index) %>
+            <% else %>
+                <%= time.clock_in.to_s(:datetime_jp_index) %>
+            <% end %>
+        </div>
+        <div class="datetime clock-in">
+            <% if time.clock_in.nil? %>
+                <%= "ーーー" %>
+            <% else %>
+                <%= time.clock_in.to_s(:datetime_jp) %>
+            <% end %>
+        </div>
+        <div class="datetime clock-out">
+            <% if time.clock_out.nil? %>
+                <%= "ーーー" %>
+            <% else %>
+                <%= time.clock_out.to_s(:datetime_jp) %>
+            <% end %>
+        </div>
+        <% if admin_signed_in? %>
+            <%= link_to "時間修正", edit_work_time_path(time.id), class: "datetime t-edit" %>
+        <% end %>
+    </div>
+<% end %>
+
+<div class="month-data">
+    合計勤務時間　/ <%= @total_worked_time.round(1).to_s %>時間<br>
+    合計収入　/ <%= @income.round.to_s %>円 
+</div>

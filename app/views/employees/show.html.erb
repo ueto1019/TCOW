@@ -1,0 +1,30 @@
+<h2>マイページ</h2>
+
+<% if admin_signed_in? %>
+    <%= link_to ">> 従業員情報設定はこちら", edit_employee_path(@employee.id), class: "employee-edit-nav" %>
+<% end %>
+
+<% if employee_signed_in? %>
+    <%= link_to ">> 従業員情報変更はこちら", edit_employee_registration_path, class: "employee-edit-nav" %>
+<% end %>
+
+<div class="my-page-head">
+    従業員ID: <%= @employee.employee_id %><br>
+    氏名: <%= @employee.name %>
+</div>
+
+<h3>打刻情報</h3>
+
+<div class="date-index">
+    <% @date.each do |date| %>
+        <%= link_to "#{date.year.to_s}年 #{date.month.to_s}月" , employee_date_employee_path(@employee.id, date.year, date.month), class: "year-month" %><br>
+    <% end %>
+</div>
+
+
+
+
+
+
+
+

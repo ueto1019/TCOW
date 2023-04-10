@@ -1,0 +1,4 @@
+<h2>従業員一覧</h2>
+<% @employees.each do |employee| %>
+    <%= link_to employee.name + employee.employee_id, employee_path(employee.id), class: "employee-index" %><br>
+<% end %>

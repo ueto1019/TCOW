@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TCOW</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header>
+    <div class="main-logo">
+      <%= link_to "TCOW 🐮", root_path, class: "logo" %>
+    </div>
+    <% if current_page?(root_path) %>
+      <%= link_to ">> 管理者の方はこちら", new_admin_session_path, class: "admin-nav" %>
+    <% end %>
+  </header>
+  <body>
+    <%= render 'layouts/flash' %>
+    <div class="main-content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

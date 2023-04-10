@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     root to: 'employees/sessions#new'
   end
 
-  resources :employees, only: [:index, :show, :edit, :update] do
+  resources :employees, except: [:new, :create] do
     member do
       get '/:year/:month', to: 'employees#date', as: 'employee_date'
     end

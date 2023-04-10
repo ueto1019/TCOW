@@ -42,3 +42,16 @@
     color: rgb(77, 77, 255);
     font-size: 19px;
 }
+
+.delete-btn {
+    display: inline-block;
+    margin-top: 350px;
+    text-decoration: none;
+    color: red;
+    font-size: 18px;
+}
+
+.delete-btn:hover {
+    font-size: 19px;
+    color: rgb(255, 75, 75);
+}

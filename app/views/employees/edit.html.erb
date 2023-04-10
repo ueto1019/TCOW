@@ -13,3 +13,4 @@
         <%= f.submit "設定" %>
     </div>
 <% end %>
+<%= link_to ">> 従業員を削除する場合はこちら", employee_path(@employee.id), data: {confirm: "本当に削除してもよろしいですか？?"}, method: :delete, class: "delete-btn" %>

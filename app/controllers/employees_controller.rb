@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-    before_action :set_employee, only: [:show, :edit, :update, :date]
+    before_action :set_employee, only: [:show, :edit, :update, :date, :destroy]
     before_action :authenticate_admin!, only: [:edit, :update]
     before_action :ensure_employee, only: [:show, :date]
 
@@ -36,6 +36,11 @@ class EmployeesController < ApplicationController
         else
             redirect_to employee_path(@employee.id), alert: '従業員情報を修正しました'
         end
+    end
+
+    def destroy
+        @employee.destroy
+        redirect_to employees_path, notice: "従業員を削除しました"
     end
 
     private

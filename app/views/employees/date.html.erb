@@ -38,5 +38,7 @@
 
 <div class="month-data">
     合計勤務時間　/ <%= @total_worked_time.round(1).to_s %>時間<br>
-    合計収入　/ <%= @income.round.to_s %>円 
+    <% if @employee.wage.present? %>
+        合計収入　/ <%= @income.round.to_s %>円
+    <% end %> 
 </div>

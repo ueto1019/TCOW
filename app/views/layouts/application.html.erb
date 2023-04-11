@@ -8,13 +8,25 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/bda031b011.js" crossorigin="anonymous"></script>
   </head>
   <header>
     <div class="main-logo">
-      <%= link_to "TCOW 🐮", root_path, class: "logo" %>
+      <%= link_to root_path, class: "logo" do %>
+        TCOW <i class="fa-solid fa-cow"></i>
+      <% end %>
     </div>
     <% if current_page?(root_path) %>
       <%= link_to ">> 管理者の方はこちら", new_admin_session_path, class: "admin-nav" %>
+    <% end %>
+    <% if employee_signed_in? %>
+      <div class="session-info">
+        ログイン中: <%= current_employee.name %>
+      </div>
+    <% elsif admin_signed_in? %>
+      <div class="session-info">
+        ログイン中: 管理者
+      </div>
     <% end %>
   </header>
   <body>

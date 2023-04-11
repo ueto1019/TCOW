@@ -51,5 +51,6 @@ test:
 production:
   <<: *default
   database: time_manager_production
-  username: time_manager
+  username: root
   password: <%= ENV['TIME_MANAGER_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

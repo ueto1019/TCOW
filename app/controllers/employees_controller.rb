@@ -22,11 +22,16 @@ class EmployeesController < ApplicationController
         if @employee.break_time.present? && @employee.break_time > 0
             total_break_time = @employee.break_time * @work_times.count
             @total_worked_time = (@work_times.sum(:worked_time) / 60.0) - total_break_time
+            if @total_worked_time < 0
+                @total_worked_time = 0
+            end
         else
             @total_worked_time = @work_times.sum(:worked_time) / 60.0
         end
 
-        @income = @total_worked_time * @employee.wage
+        if @employee.wage.present?
+            @income = @total_worked_time * @employee.wage
+        end
     end
 
     def edit

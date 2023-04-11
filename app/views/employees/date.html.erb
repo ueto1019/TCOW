@@ -40,5 +40,7 @@
     合計勤務時間　/ <%= @total_worked_time.round(1).to_s %>時間<br>
     <% if @employee.wage.present? %>
         合計収入　/ <%= @income.round.to_s %>円
+    <% else%>
+        合計収入 / 時給が設定されていません
     <% end %> 
 </div>

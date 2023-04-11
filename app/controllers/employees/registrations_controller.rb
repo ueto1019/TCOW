@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Employees::RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_admin, only: [:new]
   before_action :configure_sign_up_params, only: [:create]
 
   # before_action :configure_account_update_params, only: [:update]
@@ -48,6 +49,12 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_in_path_for(resource)
     employee_menus_path
+  end
+
+  def authenticate_admin
+    unless admin_signed_in?
+      redirect_to root_path, alert: "管理者としてログインしてください"
+    end
   end
 
   # If you have extra params to permit, append them to the sanitizer.

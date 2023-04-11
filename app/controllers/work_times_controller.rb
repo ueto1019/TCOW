@@ -14,7 +14,7 @@ class WorkTimesController < ApplicationController
 
     def clock_out
         if @latest_time && @latest_time.clock_out.nil?
-            @latest_time.update(clock_out: Time.zone.now)
+            @latest_time.update(clock_out: Time.zone.now, worked_time: ((Time.zone.now - @latest_time.clock_in) / 60.0).round(2))
             redirect_to employee_menus_path, notice: '退勤しました。'
         else
             current_time = Time.zone.now

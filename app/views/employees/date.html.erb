@@ -13,6 +13,18 @@
     <%= "#{@year.to_s}年 #{@month.to_s}月" %>
 </div>
 
+<div class="month-data">
+    合計勤務時間 / <%= @total_hour.round(1) %> 時間 ( <%= @total_minute.to_i %> 分 ) <br>
+    <% if @employee.wage.present? %>
+        合計収入　　 / <%= @income.to_i %> 円<br>
+    <% else%>
+        合計収入　　 / 時給が設定されていません<br>
+    <% end %> 
+    <div class="calc-message">
+        ※勤務時間は秒単位で記録、計算されています
+    </div>
+</div>
+
 <% @work_times.each do |time| %>
     <div class="time-table">
         <div class="datetime created-at <%= "empty-time" if time.clock_in.nil? || time.clock_out.nil? %>">
@@ -41,12 +53,3 @@
         <% end %>
     </div>
 <% end %>
-
-<div class="month-data">
-    合計勤務時間 / <%= @total_worked_time.round(1) %>時間<br>
-    <% if @employee.wage.present? %>
-        合計収入 / <%= @income.round %>円
-    <% else%>
-        合計収入 / 時給が設定されていません
-    <% end %> 
-</div>

@@ -1,6 +1,12 @@
 <div class="my-page-head">
+    氏名: <%= @employee.name %><br>
     従業員ID: <%= @employee.employee_id %><br>
-    氏名: <%= @employee.name %>
+    <% if @employee.wage.present? %>
+        時給: <%= @employee.wage %>円<br>
+    <% end %>
+    <% if @employee.break_time.present? %>
+        休憩時間: <%= @employee.break_time %>時間
+    <% end %>
 </div>
 
 <div class="month-index">
@@ -37,9 +43,9 @@
 <% end %>
 
 <div class="month-data">
-    合計勤務時間　/ <%= @total_worked_time.round(1).to_s %>時間<br>
+    合計勤務時間 / <%= @total_worked_time.round(1) %>時間<br>
     <% if @employee.wage.present? %>
-        合計収入　/ <%= @income.round.to_s %>円
+        合計収入 / <%= @income.round %>円
     <% else%>
         合計収入 / 時給が設定されていません
     <% end %> 

@@ -19,6 +19,16 @@
   </div>
 
   <div class="session-field">
+    <%= f.label :時給 %><br />
+    <%= f.number_field :wage, step: 100 %>
+  </div>
+
+  <div class="session-field">
+    <%= f.label :休憩時間 %><br />
+    <%= f.number_field :break_time %> 時間
+  </div>
+
+  <div class="session-field">
     <%= f.label :パスワード %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上)</em>

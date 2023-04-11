@@ -9,10 +9,10 @@ en:
     failure:
       already_authenticated: "すでにログインしています"
       inactive: "Your account is not activated yet."
-      invalid: "メールアドレスまたはパスワードが間違っています！"
+      invalid: "メールアドレスまたはパスワードが間違っています"
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid %{authentication_keys} or password."
+      not_found_in_database: "メールアドレスまたはパスワードが間違っています！"
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "正しいアカウントでログイン、またはアカウントを作成してください"
       unconfirmed: "You have to confirm your email address before continuing."
@@ -61,5 +61,5 @@ en:
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: ""
+        other: ""

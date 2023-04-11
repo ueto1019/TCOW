@@ -20,17 +20,28 @@ class EmployeesController < ApplicationController
         @work_times = @employee.work_times.where(year: @year, month: @month).order(clock_in: :asc)
 
         if @employee.break_time.present? && @employee.break_time > 0
-            total_break_time = @employee.break_time * @work_times.count
-            @total_worked_time = (@work_times.sum(:worked_time) / 60.0) - total_break_time
-            if @total_worked_time < 0
-                @total_worked_time = 0
+            actual_work_time = []
+            @work_times.each do |time|
+                if time.worked_time
+                    if time.worked_time > @employee.break_time * 60.0
+                        actual_work_time << time.worked_time - (@employee.break_time * 60.0)
+                    else
+                        actual_work_time << time.worked_time
+                    end
+                end
             end
+
+            @total_hour = actual_work_time.sum / 60.0
+            @total_minute = actual_work_time.sum.round
         else
-            @total_worked_time = @work_times.sum(:worked_time) / 60.0
+            @total_hour = @work_times.sum(:worked_time) / 60.0
+            @total_minute = @work_times.sum(:worked_time).round
         end
 
         if @employee.wage.present?
-            @income = @total_worked_time * @employee.wage
+            wage_per_minute = @employee.wage / 60.0
+            @income = (wage_per_minute * @total_minute).round
+            # @income = (@total_hour * @employee.wage).round
         end
     end
 

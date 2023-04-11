@@ -58,11 +58,6 @@ span {
     border-color: red;
 }
 
-.month-data {
-    margin-top: 20px;
-    font-size: 18px;
-}
-
 // マイページ
 
 .my-page-head {
@@ -82,6 +77,16 @@ span {
     display: inline-block;
     color: rgb(77, 77, 255);
     font-size: 19px;
+}
+
+.month-data {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.calc-message {
+    margin-top: 5px;
+    font-size: 15px;
 }
 
 .date-index {

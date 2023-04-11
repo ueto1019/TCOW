@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2023_04_03_143143) do
     t.integer "wage"
     t.integer "break_time"
     t.integer "worked_time"
-    t.integer "monthly_income"
+    t.integer "duty_time"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2023_04_03_143143) do
     t.datetime "clock_in"
     t.datetime "clock_out"
     t.float "worked_time"
-    t.integer "day_income"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

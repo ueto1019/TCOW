@@ -1,4 +1,16 @@
 <h2>従業員一覧</h2>
+
+<div class="search-container">
+    <%= form_tag employees_path, method: :get do %>
+        <div class="search-form">
+            <%= text_field_tag :search, params[:search], placeholder: "名前またはID ", class: "form-text" %>
+        </div>
+        <%= button_tag type: "submit", class: "search-submit" do %>
+        検索
+        <% end %>
+    <% end %>
+</div>
+
 <% @employees.each do |employee| %>
-    <%= link_to employee.name + employee.employee_id, employee_path(employee.id), class: "employee-index" %><br>
+    <%= link_to employee.name + " / " + employee.employee_id, employee_path(employee.id), class: "employee-index" %><br>
 <% end %>

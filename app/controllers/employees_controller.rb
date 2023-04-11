@@ -1,10 +1,12 @@
 class EmployeesController < ApplicationController
     before_action :set_employee, only: [:show, :edit, :update, :date, :destroy]
-    before_action :authenticate_admin!, only: [:edit, :update]
+    before_action :authenticate_admin!, only: [:index, :edit, :update]
     before_action :ensure_employee, only: [:show, :date]
 
     def index
-        @employees = Employee.all.order(created_at: :asc)
+        # @employees = Employee.all.order(created_at: :asc)
+        @employees = Employee.where("name LIKE ? OR employee_id LIKE ? ", 
+                            "%#{params[:search]}%", "%#{params[:search]}%").order(created_at: :asc)
     end
 
     def show
@@ -55,8 +57,12 @@ class EmployeesController < ApplicationController
 
     def ensure_employee
         unless admin_signed_in?
-            if @employee.id != current_employee.id
-                redirect_to employee_path(current_employee.id), alert: "不正なアクセス"
+            if employee_signed_in?
+                if @employee.id != current_employee.id
+                    redirect_to employee_path(current_employee.id), alert: "不正なアクセス"
+                end
+            else
+                redirect_to root_path, alert: "不正なアクセス"
             end
         end
     end

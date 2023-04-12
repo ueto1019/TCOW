@@ -92,6 +92,12 @@ header {
     color: rgb(25, 75, 255);
 }
 
+@media (max-width: 480px) {
+    .flash {
+        font-size: 12px;
+    }
+}
+
 /* ログイン */
 h2 {
     padding-bottom: 20px;

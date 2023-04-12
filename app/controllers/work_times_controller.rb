@@ -16,12 +16,12 @@ class WorkTimesController < ApplicationController
         if @latest_time && @latest_time.clock_out.nil?
             @latest_time.update(clock_out: Time.zone.now, worked_time: ((Time.zone.now - @latest_time.clock_in) / 60.0).round(2))
             sign_out current_employee
-            redirect_to root_path, notice: '退勤しました'
+            redirect_to root_path, notice: '退勤打刻済みのためログアウトしました'
         else
             current_time = Time.zone.now
             clock_out_info = WorkTime.create(employee_id: current_employee.id, clock_out: current_time, year: current_time.year, month: current_time.month)
             sign_out current_employee
-            redirect_to root_path, alert: '退勤しました。本日の出勤時刻が記録されていないので、管理者に連絡してください'
+            redirect_to root_path, alert: '退勤打刻済み(本日の出勤打刻に不備あり)のためログアウトしました'
         end
     end
 
@@ -60,10 +60,10 @@ class WorkTimesController < ApplicationController
         WorkTime.create(employee_id: current_employee.id, clock_in: current_time, year: current_time.year, month: current_time.month)
         if status == "valid"
             sign_out current_employee
-            redirect_to root_path, notice: '出勤しました。'
+            redirect_to root_path, notice: '出勤打刻済みのためログアウトしました'
         else
             sign_out current_employee
-            redirect_to root_path, alert: '出勤しました。前回の退勤打刻が記録されていないので、管理者に連絡してください'
+            redirect_to root_path, alert: '出勤打刻済み(前回の退勤打刻に不備あり)のためログアウトしました'
         end
     end
 end

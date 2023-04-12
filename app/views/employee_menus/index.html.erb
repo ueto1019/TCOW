@@ -1,5 +1,7 @@
 <h2>従業員メニュー</h2>
 
+<%= link_to ">> マイページはこちら", employee_path(current_employee.id), class: "employee-nav" %>
+
 <div class="clock-form">
     <%= form_with model: @work_time, url: clock_in_work_times_path, method: :post do |form| %>
         <%= form.submit "出勤", class: "btn btn-primary" %>
@@ -15,6 +17,4 @@
 <% if employee_signed_in? %>
     <%= link_to "ログアウト", destroy_employee_session_path, method: :delete, class: "logout" %>
 <% end %>
-
-<%= link_to ">> マイページはこちら", employee_path(current_employee.id), class: "employee-nav" %>
 

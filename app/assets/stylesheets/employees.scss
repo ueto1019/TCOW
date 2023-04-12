@@ -25,6 +25,10 @@
     border-bottom: 1px solid rgb(198, 198, 198);
 }
 
+.datetime.clock-out {
+    border-right: 1px solid rgb(198, 198, 198);
+}
+
 .created-at,
 .empty-time {
     width: 110px;
@@ -69,7 +73,6 @@ span {
 }
 
 // マイページ
-
 .my-page-head {
     font-size: 18px;
     margin-bottom: 3px;

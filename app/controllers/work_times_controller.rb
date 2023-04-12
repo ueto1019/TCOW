@@ -15,11 +15,13 @@ class WorkTimesController < ApplicationController
     def clock_out
         if @latest_time && @latest_time.clock_out.nil?
             @latest_time.update(clock_out: Time.zone.now, worked_time: ((Time.zone.now - @latest_time.clock_in) / 60.0).round(2))
-            redirect_to employee_menus_path, notice: '退勤しました。'
+            sign_out current_employee
+            redirect_to root_path, notice: '退勤打刻済みのためログアウトしました'
         else
             current_time = Time.zone.now
             clock_out_info = WorkTime.create(employee_id: current_employee.id, clock_out: current_time, year: current_time.year, month: current_time.month)
-            redirect_to employee_menus_path, alert: '退勤しました。本日の出勤時刻が記録されていないので、管理者に連絡してください！'
+            sign_out current_employee
+            redirect_to root_path, alert: '退勤打刻済み(本日の出勤打刻に不備あり)のためログアウトしました'
         end
     end
 
@@ -28,16 +30,14 @@ class WorkTimesController < ApplicationController
 
     def update
         @current_employee = @work_time.employee
+        @work_time.update(work_time_params)
 
-        if @work_time.update(work_time_params)
-            worked_time = ((@work_time.clock_out - @work_time.clock_in) / 60.0).round(2)
-            year = @work_time.clock_in.year
-            month = @work_time.clock_in.month
-            @work_time.update(worked_time: worked_time, year: year, month: month)
-            redirect_to employee_path(@current_employee.id), notice: '打刻時間を修正しました'
-        else
-            redirect_to edit_work_time_path(@work_time.id), alert: '変更内容に誤りがあります'
-        end
+        worked_time = ((@work_time.clock_out - @work_time.clock_in) / 60.0).round(2)
+        year = @work_time.clock_in.year
+        month = @work_time.clock_in.month
+
+        @work_time.update(worked_time: worked_time, year: year, month: month)
+        redirect_to employee_path(@current_employee.id), notice: '打刻時間を修正しました'
     end
 
     private
@@ -59,9 +59,11 @@ class WorkTimesController < ApplicationController
         current_time = Time.zone.now
         WorkTime.create(employee_id: current_employee.id, clock_in: current_time, year: current_time.year, month: current_time.month)
         if status == "valid"
-            redirect_to employee_menus_path, notice: '出勤しました。'
+            sign_out current_employee
+            redirect_to root_path, notice: '出勤打刻済みのためログアウトしました'
         else
-            redirect_to employee_menus_path, alert: '出勤しました。前回の退勤打刻が記録されていないので、管理者に連絡してください！'
+            sign_out current_employee
+            redirect_to root_path, alert: '出勤打刻済み(前回の退勤打刻に不備あり)のためログアウトしました'
         end
     end
 end

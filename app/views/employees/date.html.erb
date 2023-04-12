@@ -2,10 +2,15 @@
     氏名: <%= @employee.name %><br>
     従業員ID: <%= @employee.employee_id %><br>
     <% if @employee.wage.present? %>
-        時給: <%= @employee.wage %>円<br>
+        時給: <%= @employee.wage %>円
+    <% else %>
+        時給: 未設定
     <% end %>
+    /
     <% if @employee.break_time.present? %>
         休憩時間: <%= @employee.break_time %>時間
+    <% else %>
+        休憩時間: 未設定
     <% end %>
 </div>
 
@@ -14,15 +19,13 @@
 </div>
 
 <div class="month-data">
-    合計勤務時間 / <%= @total_hour.round(1) %> 時間 ( <%= @total_minute.to_i %> 分 ) <br>
+    勤務日数:　<%= @work_day_count %> 日<br>
+    勤務時間:　<%= @total_hour.round(1) %> 時間 ( <%= @total_minute.to_i %> 分 ) <br>
     <% if @employee.wage.present? %>
-        合計収入　　 / <%= @income.to_i %> 円<br>
+        合計収入:　<%= @income.to_i %> 円<br>
     <% else%>
-        合計収入　　 / 時給が設定されていません<br>
+        合計収入:　時給未設定<br>
     <% end %> 
-    <div class="calc-message">
-        ※勤務時間は秒単位で記録、計算されています
-    </div>
 </div>
 
 <% @work_times.each do |time| %>
@@ -40,6 +43,9 @@
             <% else %>
                 <%= time.clock_in.to_s(:datetime_jp) %>
             <% end %>
+        </div>
+        <div class="clock-separate">
+            〜
         </div>
         <div class="datetime clock-out">
             <% if time.clock_out.nil? %>

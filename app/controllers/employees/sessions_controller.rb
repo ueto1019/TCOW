@@ -32,7 +32,7 @@ class Employees::SessionsController < Devise::SessionsController
 
   def avoid_double_session
     if admin_signed_in?
-      redirect_to admin_menus_path, alert: "ログアウトしてください"
+      redirect_to admin_menus_path
     end
   end
 end

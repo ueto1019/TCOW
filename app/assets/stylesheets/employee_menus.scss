@@ -3,9 +3,9 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .clock-form input {
-    height: 50px;
+    height: 70px;
     width: 300px;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     font-size: 30px;
 }
 
@@ -15,13 +15,11 @@
     align-items: center;
     height: 30px;
     width: 100px;
-    margin-bottom: 30px;
     background-color: #efefef;
     text-decoration: none;
     color: black;
     border-radius: 2px;
     text-align: center;
-    margin-top: 10px;
     border: 1px solid black;
 }
 
@@ -32,10 +30,9 @@
 .employee-nav {
     display: inline-block;
     text-decoration: none;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
     font-size: 18px;
     color: blue;
-    text-align: center;
 }
 
 .employee-nav:hover {

@@ -1,7 +1,7 @@
 <h2>マイページ</h2>
 
 <% if admin_signed_in? %>
-    <%= link_to ">> 従業員情報設定はこちら", edit_employee_path(@employee.id), class: "employee-edit-nav" %>
+    <%= link_to ">> 従業員情報設定はこちら", edit_employee_path(@employee.id), class: "employee-edit-nav" %><br>
 <% end %>
 
 <% if employee_signed_in? %>
@@ -9,8 +9,8 @@
 <% end %>
 
 <div class="my-page-head">
-    従業員ID: <%= @employee.employee_id %><br>
-    氏名: <%= @employee.name %>
+    氏名: <%= @employee.name %><br>
+    従業員ID: <%= @employee.employee_id %>
 </div>
 
 <h3>打刻情報</h3>

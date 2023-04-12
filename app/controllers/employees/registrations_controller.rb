@@ -52,6 +52,7 @@ class Employees::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
+    sign_out(resource)
     admin_menus_path
   end
 

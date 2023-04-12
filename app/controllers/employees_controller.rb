@@ -18,6 +18,7 @@ class EmployeesController < ApplicationController
         @month = params[:month]
 
         @work_times = @employee.work_times.where(year: @year, month: @month).order(clock_in: :asc)
+        @work_day_count = @work_times.count
 
         if @employee.break_time.present? && @employee.break_time > 0
             actual_work_time = []
@@ -41,7 +42,6 @@ class EmployeesController < ApplicationController
         if @employee.wage.present?
             wage_per_minute = @employee.wage / 60.0
             @income = (wage_per_minute * @total_minute).round
-            # @income = (@total_hour * @employee.wage).round
         end
     end
 

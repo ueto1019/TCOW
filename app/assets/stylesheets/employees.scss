@@ -18,19 +18,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
+    width: 65px;
     padding: 5px;
     height: 30px;
-    border: 1px solid rgb(198, 198, 198);
+    border-top: 1px solid rgb(198, 198, 198);
+    border-bottom: 1px solid rgb(198, 198, 198);
 }
 
 .created-at,
 .empty-time {
-    width: 120px;
+    width: 110px;
 }
 
 .created-at {
     background-color: rgb(240, 240, 240);
+    border-left: 1px solid rgb(198, 198, 198);
+    border-right: 1px solid rgb(198, 198, 198);
 }
 
 .empty-time {
@@ -58,11 +61,21 @@ span {
     border-color: red;
 }
 
+.clock-separate {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgb(198, 198, 198);
+    border-bottom: 1px solid rgb(198, 198, 198);
+}
+
 // マイページ
 
 .my-page-head {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 3px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
+    width: 350px;
 }
 
 .employee-edit-nav {
@@ -82,11 +95,6 @@ span {
 .month-data {
     font-size: 18px;
     margin-bottom: 20px;
-}
-
-.calc-message {
-    margin-top: 5px;
-    font-size: 15px;
 }
 
 .date-index {
